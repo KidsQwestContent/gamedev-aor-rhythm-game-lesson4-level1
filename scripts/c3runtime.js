@@ -3901,6 +3901,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.Audio.Cnds.OnEnded,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
@@ -3921,8 +3922,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.SubVar,
+		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Keyboard.Cnds.IsKeyDown,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.Sprite.Cnds.CompareX,
@@ -3931,11 +3934,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
-		C3.Plugins.Audio.Cnds.OnEnded,
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.System.Acts.SetBoolVar,
-		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Audio.Acts.Stop,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.GoToLayoutByName
@@ -3975,6 +3977,11 @@ self.C3_JsPropNameTable = [
 	{drum_T: 0},
 	{note_C: 0},
 	{drum_C: 0},
+	{mask: 0},
+	{ins_mouse: 0},
+	{ins_key: 0},
+	{ins_finger: 0},
+	{line: 0},
 	{notes: 0},
 	{drums: 0},
 	{state: 0},
@@ -4089,8 +4096,11 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => "instruction",
+		() => "MASK",
+		() => "INSTRUCTION",
+		() => "insDK",
 		() => "count_down",
-		() => "GAME OVER",
 		() => "level1a",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4106,7 +4116,7 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => (v0.GetValue() * n1.ExpInstVar_Family());
 		},
-		() => "T17",
+		() => "T33",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 45);
@@ -4149,7 +4159,6 @@ self.C3_ExpressionFuncs = [
 		() => 93.6545,
 		() => 3,
 		() => "level1b",
-		() => "T33",
 		() => "Level 1a",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
